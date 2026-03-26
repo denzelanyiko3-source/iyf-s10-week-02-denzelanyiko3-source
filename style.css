@@ -1,0 +1,326 @@
+:root {
+
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 1.875rem;
+  --font-4xl: 2.25rem;
+
+  --onyx: #0d160b;
+  --vintage-grape: #43364a;
+  --vintage-lavender: #785589;
+  --dusty-mauve: #977390;
+  --dusty-rose: #ac7b7d;
+  --rosy-taupe: #bb8a89;
+
+  --color-primary: var(--onyx);
+  --color-secondary: var(--vintage-grape);
+  --color-background: var(--vintage-lavender);
+  --color-text: #ffffff;
+  --color-muted: var(--rosy-taupe);
+
+  /* Variations */
+  --color-primary-light: #43364a;
+  --color-primary-dark: #0b1209;
+}
+
+
+/* 1. Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 3. Base Typography */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--font-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  margin: 0;
+  padding: 20px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 4. Headings */
+h1 {
+  font-size: var(--font-4xl);
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: var(--font-3xl);
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--color-secondary);
+}
+
+h3 {
+  font-size: var(--font-2xl);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+h4 {
+  font-size: var(--font-xl);
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+h6 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+/* Paragraph styling */
+p {
+  font-size: var(--font-base);
+  margin-bottom: 12px;
+}
+
+.box-model-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+/* content */
+.content-box {
+  background: lightgreen;
+  padding: 14px;
+  border: 2px solid #0b1209;
+}
+
+/* padding */
+.padding-box {
+  padding: 30px;
+  background: orange;
+  border: 2px solid #a65a00;
+}
+
+/* border */
+.border-box {
+  border: 5px solid black;
+  padding: 16px;
+  background: #fff8e8;
+}
+
+/* margin */
+.margin-box {
+  margin: 40px;
+  background: lightpink;
+  padding: 12px;
+  border: 2px dashed #b30046;
+}
+
+
+
+/* This box ends up 340px wide - why? Fix it! */
+.broken-box {
+    width: 300px;
+    padding: 20px;
+    border: none;
+    box-sizing:border-box;
+}
+
+
+
+/*Card Component*/
+.card{
+  width:100%;
+  max-width: 300px;
+  padding:20px;
+  border:1px solid gray;
+  box-sizing:border-box;
+  background: var(--color-background);
+  color: var(--color-text);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.card img{
+  width:100%;
+}
+
+.broken-box {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 12px 16px;
+  background: var(--color-primary);
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+.logo {
+  font-weight: 700;
+  font-size: var(--font-lg);
+  justify-content: left;
+}
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  
+
+}
+
+.nav-links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+  
+}
+
+.card-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* Photo Gallery:(3-columns,Equal column widths,Consistent gap between items,Images fill their grid cells) */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Magazine Layout: ([Header - spans full width],[Sidebar] [Main Content],[Sidebar] [Main Content  ],[Footer - spans full width  ]) */
+.magazine-layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  gap: 16px;
+}
+.magazine-layout .header {
+  grid-area: header;
+  background: var(--color-primary);
+  color: var(--color-text);
+  padding: 16px;
+}
+.magazine-layout .sidebar {
+  grid-area: sidebar;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  padding: 16px;
+}
+.magazine-layout .main {
+  grid-area: main;
+  background: var(--color-background);
+  color: var(--color-text);
+  padding: 16px;
+}
+.magazine-layout .footer {
+  grid-area: footer;
+  background: var(--color-primary);
+  color: var(--color-text);
+  padding: 16px;
+  text-align: center;
+}
+
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  padding: 16px;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.footer .copyright {
+  flex: 1 1 100%;
+  text-align: center;
+  margin-top: 12px;
+}
+
+@media (max-width: 780px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .card-row {
+    flex-direction: column;
+  }
+
+  .card-row article {
+    width: 100%;
+  }
+
+  .box-model-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.card h2{
+margin-bottom:15px;
+}
+
+.card button{
+  margin-top:15px;
+  padding:10px;
+  background: var(--color-primary);
+  color: var(--color-text);
+  border:none;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: var(--color-secondary);
+}
