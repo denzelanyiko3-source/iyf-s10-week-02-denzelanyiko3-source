@@ -3,14 +3,371 @@
 <head>
 <meta charset="UTF-8">
 <title>Box Model Practice</title>
-<link rel="stylesheet" href="style.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 1.875rem;
+  --font-4xl: 2.25rem;
+
+  --onyx: #0d160b;
+  --vintage-grape: #43364a;
+  --vintage-lavender: #785589;
+  --dusty-mauve: #977390;
+  --dusty-rose: #ac7b7d;
+  --rosy-taupe: #bb8a89;
+
+  --color-primary: var(--onyx);
+  --color-secondary: var(--vintage-grape);
+  --color-background: var(--vintage-lavender);
+  --color-text: #ffffff;
+  --color-muted: var(--rosy-taupe);
+
+  /* Variations */
+  --color-primary-light: #43364a;
+  --color-primary-dark: #0b1209;
+}
+
+/* 1. Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 3. Base Typography */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--font-base);
+  line-height: 1.6;
+  color: #222;
+  background: #f5f5f5;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 4. Headings */
+h1 {
+  font-size: var(--font-4xl);
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: var(--font-3xl);
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--color-secondary);
+}
+
+h3 {
+  font-size: var(--font-2xl);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+h4 {
+  font-size: var(--font-xl);
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+h6 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+/* Paragraph styling */
+p {
+  font-size: var(--font-base);
+  margin-bottom: 12px;
+}
+
+.box-model-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+/* content */
+.content-box {
+  background: lightgreen;
+  padding: 14px;
+  border: 2px solid #0b1209;
+}
+
+/* padding */
+.padding-box {
+  padding: 30px;
+  background: orange;
+  border: 2px solid #a65a00;
+}
+
+/* border */
+.border-box {
+  border: 5px solid black;
+  padding: 16px;
+  background: #fff8e8;
+}
+
+/* margin */
+.margin-box {
+  margin: 40px;
+  background: lightpink;
+  padding: 12px;
+  border: 2px dashed #b30046;
+}
+
+/* This box ends up 340px wide - why? Fix it! */
+.broken-box {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+/*Card Component*/
+.card {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  background: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card img {
+  width: 100%;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 12px 16px;
+  background: var(--color-primary);
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: var(--font-lg);
+  justify-content: left;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.nav-links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.card-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* Photo Gallery:(3-columns,Equal column widths,Consistent gap between items,Images fill their grid cells) */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Header */
+header {
+  background: black;
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Grid Layout */
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  gap: 15px;
+  padding: 15px;
+}
+
+/* Featured */
+.featured {
+  grid-column: 1 / 2;
+  background: white;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+  grid-column: 2 / 3;
+  background: #222;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Magazine cards */
+.article-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Make cards span nicely */
+.article-card:nth-child(3) {
+  grid-column: 1 / 2;
+}
+
+.article-card:nth-child(4) {
+  grid-column: 2 / 3;
+}
+
+.article-card:nth-child(5) {
+  grid-column: 1 / 2;
+}
+
+.article-card:nth-child(6) {
+  grid-column: 2 / 3;
+}
+
+/* Footer */
+footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  padding: 16px;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.footer .copyright {
+  flex: 1 1 100%;
+  text-align: center;
+  margin-top: 12px;
+}
+
+@media (max-width: 780px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .card-row {
+    flex-direction: column;
+  }
+
+  .card-row article {
+    width: 100%;
+  }
+
+  .box-model-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card h2 {
+  margin-bottom: 15px;
+}
+
+.card button {
+  margin-top: 15px;
+  padding: 10px;
+  background: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: var(--color-secondary);
+}
+
+a:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+</style>
 </head>
 
 <body>
 <nav class="navbar">
   <span class="logo">[Logo]</span>
   <div class="nav-links">
-    <a href="#">Home</a>
+    <a href="ind">Home</a>
     <a href="#">About</a>
     <a href="#">Projects</a>
     <a href="#">Contact</a>
@@ -68,29 +425,38 @@
   <div class="photo-item"><img src="https://picsum.photos/200/200?5" alt="Photo 5"></div>
   <div class="photo-item"><img src="https://picsum.photos/200/200?6" alt="Photo 6"></div>
 </section>
+ 
+<div class="divider"></div>
 
-/* Magazine layout */
-<section class="magazine-layout">
-  <div class="magazine-item">
-    <img src="https://picsum.photos/400/300?1" alt="Magazine 1">
-    <h2>Magazine Article One</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur.</p>
-    <button>Read more</button>
-  </div>
-  <div class="magazine-item">
-    <img src="https://picsum.photos/400/300?2" alt="Magazine 2">
-    <h2>Magazine Article Two</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc effic  itur.</p>
-    <button>Read more</button>
-  </div>
-  <div class="magazine-item">
-    <img src="https://picsum.photos/400/300?3" alt="Magazine 3">
-    <h2>Magazine Article Three</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc effic  itur.</p>
-    <button>Read more</button>
-  </div>
-</section>
+<div class="container">
+  <header>MAGAZINE</header>
 
+  <main class="main-grid">
+    <!-- Featured Article -->
+    <section class="featured">
+      <h2>Featured Story</h2>
+      <p>This is the main headline article...</p>
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Latest</h3>
+      <ul>
+        <li>Breaking news</li>
+        <li>Tech update</li>
+        <li>Sports highlight</li>
+      </ul>
+    </aside>
+
+    <!-- Other Articles -->
+    <section class="article-card">Article 1</section>
+    <section class="article-card">Article 2</section>
+    <section class="article-card">Article 3</section>
+    <section class="article-card">Article 4</section>
+  </main>
+
+  <footer>© 2026 Magazine</footer>
+</div>
 
 </main>
 

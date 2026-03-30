@@ -14,9 +14,12 @@ Understanding the art of css and linking it to make a good portfolio.
 - JavaScript
 
 ## Features
-- 
-- 
-- 
+- styles.css linked to all pages
+- Typography system with Google Fonts
+- Flexbox navigation and layout
+- CSS Grid photo gallery
+- Responsive design (mobile-first)
+- Tested on multiple screen sizes
 
 ## How to Run
 1. Clone this repository
@@ -25,13 +28,10 @@ Understanding the art of css and linking it to make a good portfolio.
    Run `npm install` then `npm start`
 
 ## Lessons Learned
-What did you learn while building this project?
+Style.css is large than expected and helps the website to be decorated and looking good.
 
 ## Challenges Faced
-What problems did you encounter and how did you solve them?
-
-## Screenshots (optional)
-![Screenshot description](path/to/screenshot.png)
+My codespace budget got over  and i had uncommited changes, so i had to add a budget inorder to commit the whole codes. 
 
 ## Live Demo (if deployed)
-[View Live Demo](https://your-deployed-url.com)
+[View Live Demo](https://denzelanyiko3-source.github.io/iyf-s10-week-02-denzelanyiko3-source/)
